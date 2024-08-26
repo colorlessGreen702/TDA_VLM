@@ -8,7 +8,9 @@ import torch
 import torch.nn.functional as F
 import operator
 
-import clip
+from transformers import CLIPProcessor, CLIPModel
+
+# import clip
 from utils import *
 
 
@@ -60,7 +62,9 @@ def compute_cache_logits(image_features, cache, alpha, beta, clip_weights, neg_m
         else:
             cache_values = (F.one_hot(torch.Tensor(cache_values).to(torch.int64), num_classes=clip_weights.size(1))).cuda().half()
 
+        image_features = image_features
         affinity = image_features @ cache_keys
+        affinity = affinity.half()
         cache_logits = ((-1) * (beta - beta * affinity)).exp() @ cache_values
         return alpha * cache_logits
 
@@ -109,8 +113,14 @@ def main():
     config_path = args.config
 
     # Initialize CLIP model
-    clip_model, preprocess = clip.load(args.backbone)
-    clip_model.eval()
+    # clip_model, preprocess = clip.load(args.backbone)
+    # clip_model.eval()
+
+    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16")
+    preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    clip_model = clip_model.to(device)
 
     # Set random seed
     random.seed(1)
@@ -130,11 +140,13 @@ def main():
         print(cfg, "\n")
         
         test_loader, classnames, template = build_test_data_loader(dataset_name, args.data_root, preprocess)
-        clip_weights = clip_classifier(classnames, template, clip_model)
+        clip_weights = clip_classifier(classnames, template, clip_model, preprocess)
 
         if args.wandb:
             run_name = f"{dataset_name}"
             run = wandb.init(project="ETTA-CLIP", config=cfg, group=group_name, name=run_name)
+        else:
+            run = wandb.init(mode='disabled')
 
         acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
 

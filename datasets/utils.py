@@ -261,22 +261,22 @@ class DatasetWrapper(TorchDataset):
         self.k_tfm = k_tfm if is_train else 1
         self.return_img0 = return_img0
 
-        if self.k_tfm > 1 and transform is None:
-            raise ValueError(
-                'Cannot augment the image {} times '
-                'because transform is None'.format(self.k_tfm)
-            )
+        # if self.k_tfm > 1 and transform is None:
+        #     raise ValueError(
+        #         'Cannot augment the image {} times '
+        #         'because transform is None'.format(self.k_tfm)
+        #     )
 
-        # Build transform that doesn't apply any data augmentation
-        interp_mode = T.InterpolationMode.BICUBIC
-        to_tensor = []
-        to_tensor += [T.Resize(input_size, interpolation=interp_mode)]
-        to_tensor += [T.ToTensor()]
-        normalize = T.Normalize(
-            mean=(0.48145466, 0.4578275, 0.40821073), std=(0.26862954, 0.26130258, 0.27577711)
-        )
-        to_tensor += [normalize]
-        self.to_tensor = T.Compose(to_tensor)
+        # # Build transform that doesn't apply any data augmentation
+        # interp_mode = T.InterpolationMode.BICUBIC
+        # to_tensor = []
+        # to_tensor += [T.Resize(input_size, interpolation=interp_mode)]
+        # to_tensor += [T.ToTensor()]
+        # normalize = T.Normalize(
+        #     mean=(0.48145466, 0.4578275, 0.40821073), std=(0.26862954, 0.26130258, 0.27577711)
+        # )
+        # to_tensor += [normalize]
+        # self.to_tensor = T.Compose(to_tensor)
 
     def __len__(self):
         return len(self.data_source)
@@ -290,7 +290,8 @@ class DatasetWrapper(TorchDataset):
             'impath': item.impath
         }
 
-        img0 = read_image(item.impath)
+        # img0 = read_image(item.impath)
+        img0 = Image.open(item.impath).convert("RGB")
 
         if self.transform is not None:
             if isinstance(self.transform, (list, tuple)):
@@ -309,11 +310,24 @@ class DatasetWrapper(TorchDataset):
 
         return output['img'], output['label']
 
-    def _transform_image(self, tfm, img0):
+    # def _transform_image(self, tfm, img0):
+    #     img_list = []
+
+    #     for k in range(self.k_tfm):
+    #         img_list.append(tfm(img0))
+
+    #     img = img_list
+    #     if len(img) == 1:
+    #         img = img[0]
+
+    #     return img
+    def _transform_image(self, processor, img0):
         img_list = []
 
-        for k in range(self.k_tfm):
-            img_list.append(tfm(img0))
+        for _ in range(self.k_tfm):
+            # Transform the image using the CLIPProcessor
+            inputs = processor(images=img0, return_tensors="pt")
+            img_list.append(inputs['pixel_values'].squeeze(0))  # Remove batch dimension
 
         img = img_list
         if len(img) == 1:

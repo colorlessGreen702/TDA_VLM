@@ -3,7 +3,7 @@ import yaml
 import torch
 import math
 import numpy as np
-import clip
+# import clip
 from datasets.imagenet import ImageNet
 from datasets import build_dataset
 from datasets.utils import build_data_loader, AugMixAugmenter
@@ -41,7 +41,7 @@ def cls_acc(output, target, topk=1):
     return acc
 
 
-def clip_classifier(classnames, template, clip_model):
+def clip_classifier(classnames, template, clip_model, processor):
     with torch.no_grad():
         clip_weights = []
 
@@ -49,9 +49,10 @@ def clip_classifier(classnames, template, clip_model):
             # Tokenize the prompts
             classname = classname.replace('_', ' ')
             texts = [t.format(classname) for t in template]
-            texts = clip.tokenize(texts).cuda()
+            inputs = processor(text=texts, return_tensors="pt", padding=True)  # Processor handles tokenization
+            input_ids = inputs["input_ids"].cuda()
             # prompt ensemble for ImageNet
-            class_embeddings = clip_model.encode_text(texts)
+            class_embeddings = clip_model.get_text_features(input_ids=input_ids)
             class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
             class_embedding = class_embeddings.mean(dim=0)
             class_embedding /= class_embedding.norm()
@@ -68,7 +69,7 @@ def get_clip_logits(images, clip_model, clip_weights):
         else:
             images = images.cuda()
 
-        image_features = clip_model.encode_image(images)
+        image_features = clip_model.get_image_features(pixel_values=images)
         image_features /= image_features.norm(dim=-1, keepdim=True)
 
         clip_logits = 100. * image_features @ clip_weights
