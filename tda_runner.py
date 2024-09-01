@@ -8,7 +8,7 @@ import torch
 import torch.nn.functional as F
 import operator
 
-from transformers import CLIPProcessor, CLIPModel
+from transformers import CLIPProcessor, CLIPModel, HqqConfig
 
 # import clip
 from utils import *
@@ -116,11 +116,15 @@ def main():
     # clip_model, preprocess = clip.load(args.backbone)
     # clip_model.eval()
 
-    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16")
-    preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
+    # quant_config = HqqConfig(nbits=1, group_size=8, quant_zero=False, quant_scale=False, axis=0)
+    # clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", device_map="cuda", quantization_config=quant_config)
 
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    clip_model = clip_model.to(device)
+    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", device_map="cuda")
+    preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
+    
+
+    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    # clip_model = clip_model #.to(device)
 
     # Set random seed
     random.seed(1)
