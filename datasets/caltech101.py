@@ -12,6 +12,8 @@ template = ["itap of a {}.",
             "art of the {}.",
             "a photo of the small {}."]
 
+# template = ["a photo of a {}."]
+
 
 class Caltech101(DatasetBase):
 
