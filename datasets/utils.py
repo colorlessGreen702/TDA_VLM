@@ -290,8 +290,7 @@ class DatasetWrapper(TorchDataset):
             'impath': item.impath
         }
 
-        # img0 = read_image(item.impath)
-        img0 = Image.open(item.impath).convert("RGB")
+        img0 = read_image(item.impath)
 
         if self.transform is not None:
             if isinstance(self.transform, (list, tuple)):

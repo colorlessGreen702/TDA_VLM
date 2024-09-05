@@ -64,7 +64,6 @@ def compute_cache_logits(image_features, cache, alpha, beta, clip_weights, neg_m
 
         image_features = image_features
         affinity = image_features @ cache_keys
-        affinity = affinity.half()
         cache_logits = ((-1) * (beta - beta * affinity)).exp() @ cache_values
         return alpha * cache_logits
 
@@ -116,10 +115,10 @@ def main():
     # clip_model, preprocess = clip.load(args.backbone)
     # clip_model.eval()
 
-    # quant_config = HqqConfig(nbits=1, group_size=8, quant_zero=False, quant_scale=False, axis=0)
-    # clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", device_map="cuda", quantization_config=quant_config)
+    quant_config = HqqConfig(nbits=2, group_size=8, quant_zero=False, quant_scale=False, axis=0)
+    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda", quantization_config=quant_config)
 
-    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", device_map="cuda")
+    # clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda")
     preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
     
 
@@ -147,8 +146,8 @@ def main():
         clip_weights = clip_classifier(classnames, template, clip_model, preprocess)
 
         if args.wandb:
-            run_name = f"{dataset_name}"
-            run = wandb.init(project="ETTA-CLIP", config=cfg, group=group_name, name=run_name)
+            run_name = f"{dataset_name} HF No TDA 2bit 8gp"
+            run = wandb.init(project="TDA-CLIP-ViT-B16", config=cfg, group=group_name, name=run_name)
         else:
             run = wandb.init(mode='disabled')
 
