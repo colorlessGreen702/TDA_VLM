@@ -72,8 +72,8 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
         pos_cache, neg_cache, accuracies = {}, {}, []
         
         #Unpack all hyperparameters
-        # pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
-        pos_enabled, neg_enabled = False, False
+        pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
+        # pos_enabled, neg_enabled = False, False
         if pos_enabled:
             pos_params = {k: pos_cfg[k] for k in ['shot_capacity', 'alpha', 'beta']}
         if neg_enabled:
@@ -145,7 +145,7 @@ def main():
         clip_weights = clip_classifier(classnames, template, clip_model, preprocess)
 
         if args.wandb:
-            run_name = f"{dataset_name} Original HF Prompts No TDA"
+            run_name = f"{dataset_name} x HF Prompts TDA"
             run = wandb.init(project="CLIP-ViT-B16-VM", config=cfg, group=group_name, name=run_name)
         else:
             run = wandb.init(mode='disabled')
