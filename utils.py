@@ -131,7 +131,7 @@ def build_test_data_loader(dataset_name, root_path, preprocess):
         test_loader = torch.utils.data.DataLoader(dataset.test, batch_size=1, num_workers=8, shuffle=True)
     
     elif dataset_name in ['A','V','R','S']:
-        preprocess = get_ood_preprocess()
+        # preprocess = get_ood_preprocess()
         dataset = build_dataset(f"imagenet-{dataset_name.lower()}", root_path)
         test_loader = build_data_loader(data_source=dataset.test, batch_size=1, is_train=False, tfm=preprocess, shuffle=True)
 

@@ -72,7 +72,8 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
         pos_cache, neg_cache, accuracies = {}, {}, []
         
         #Unpack all hyperparameters
-        pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
+        # pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
+        pos_enabled, neg_enabled = False, False
         if pos_enabled:
             pos_params = {k: pos_cfg[k] for k in ['shot_capacity', 'alpha', 'beta']}
         if neg_enabled:
@@ -112,18 +113,16 @@ def main():
     config_path = args.config
 
     # Initialize CLIP model
-    # clip_model, preprocess = clip.load(args.backbone)
-    # clip_model.eval()
 
-    quant_config = HqqConfig(nbits=2, group_size=8, quant_zero=False, quant_scale=False, axis=0)
-    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda", quantization_config=quant_config)
+    # quant_config = HqqConfig(nbits=8, group_size=64, quant_zero=False, quant_scale=False, axis=0)
+    # clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda", quantization_config=quant_config)
 
-    # clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda")
-    preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
+    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda")
     
-
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    # clip_model = clip_model #.to(device)
+    preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
+    mem = torch.cuda.memory_allocated() / 1024 ** 2
+    print(f"Memory allocated after model is on GPU: {mem:.2f} MB")
+    # print(f"Max memory allocated: {torch.cuda.max_memory_allocated() / 1024 ** 2:.2f} MB")
 
     # Set random seed
     random.seed(1)
@@ -146,8 +145,8 @@ def main():
         clip_weights = clip_classifier(classnames, template, clip_model, preprocess)
 
         if args.wandb:
-            run_name = f"{dataset_name} HF No TDA 2bit 8gp"
-            run = wandb.init(project="TDA-CLIP-ViT-B16", config=cfg, group=group_name, name=run_name)
+            run_name = f"{dataset_name} Original HF Prompts No TDA"
+            run = wandb.init(project="CLIP-ViT-B16-VM", config=cfg, group=group_name, name=run_name)
         else:
             run = wandb.init(mode='disabled')
 
@@ -155,7 +154,12 @@ def main():
 
         if args.wandb:
             wandb.log({f"{dataset_name}": acc})
+            max_mem = torch.cuda.max_memory_allocated() / 1024 ** 2
+            torch.cuda.reset_max_memory_allocated
+            wandb.log({f"{dataset_name} GPU memory (MB)": mem})
+            wandb.log({f"{dataset_name} Max GPU memory allocated (MB)": max_mem})
             run.finish()
+    print(f"Max memory allocated: {torch.cuda.max_memory_allocated() / 1024 ** 2:.2f} MB")
 
 if __name__ == "__main__":
     main()
