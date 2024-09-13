@@ -7,8 +7,12 @@ from datetime import datetime
 import torch
 import torch.nn.functional as F
 import operator
+import gc
+import csv
+import os
+import timeit
 
-from transformers import CLIPProcessor, CLIPModel, HqqConfig
+from transformers import CLIPProcessor, CLIPModel, HqqConfig, QuantoConfig, BitsAndBytesConfig
 
 # import clip
 from utils import *
@@ -72,8 +76,8 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
         pos_cache, neg_cache, accuracies = {}, {}, []
         
         #Unpack all hyperparameters
-        pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
-        # pos_enabled, neg_enabled = False, False
+        # pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
+        pos_enabled, neg_enabled = False, False
         if pos_enabled:
             pos_params = {k: pos_cfg[k] for k in ['shot_capacity', 'alpha', 'beta']}
         if neg_enabled:
@@ -105,6 +109,17 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
                 print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))
         print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))   
         return sum(accuracies)/len(accuracies)
+    
+def append_to_csv(file_path, header, data):
+    file_exists = os.path.isfile(file_path)
+    
+    with open(file_path, 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        
+        if not file_exists:
+            writer.writerow(header)
+        
+        writer.writerow(data)
 
 
 
@@ -113,16 +128,25 @@ def main():
     config_path = args.config
 
     # Initialize CLIP model
+    # nbits_list = [8, 4, 3, 2, 1]
+    # group_sizes = [128, 64, 32, 16, 8]
+    header = ['Model', 'caltech101', 'dtd', 'oxford_pets', 'ucf101', 'ImageNetA', 'ImageNetV', 'Average']
+    max_mem_header = header[:1] + ['Initial mem (MB)'] + header[1:]
+    time_header = header + ['Total']
 
-    # quant_config = HqqConfig(nbits=8, group_size=64, quant_zero=False, quant_scale=False, axis=0)
-    # clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda", quantization_config=quant_config)
 
-    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda")
+    # for nb in nbits_list:
+    #     for gp in group_sizes:
+    model, acc_data, max_mem, init_mem, runtimes = [], [], [], [], []
+    # quant_config = HqqConfig(nbits=nb, group_size=gp, quant_zero=False, quant_scale=False, axis=0)
+    # quant_config = BitsAndBytesConfig(load_in_8bit=True)
+    quant_config = None
+    clip_model = CLIPModel.from_pretrained("openai/clip-vit-base-patch16", torch_dtype=torch.float16, device_map="cuda", quantization_config=quant_config)
     
     preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
     mem = torch.cuda.memory_allocated() / 1024 ** 2
     print(f"Memory allocated after model is on GPU: {mem:.2f} MB")
-    # print(f"Max memory allocated: {torch.cuda.max_memory_allocated() / 1024 ** 2:.2f} MB")
+    init_mem.append(round(mem, 2))
 
     # Set random seed
     random.seed(1)
@@ -132,9 +156,14 @@ def main():
         date = datetime.now().strftime("%b%d_%H-%M-%S")
         group_name = f"{args.backbone}_{args.datasets}_{date}"
     
+    # model.append(f'HQQ {nb}bit {gp}gp HF Prompts TDA')
+    model.append(f'HF Prompts No TDA')
+
+
     # Run TDA on each dataset
     datasets = args.datasets.split('/')
     for dataset_name in datasets:
+        torch.cuda.reset_peak_memory_stats()
         print(f"Processing {dataset_name} dataset.")
         
         cfg = get_config_file(config_path, dataset_name)
@@ -145,21 +174,32 @@ def main():
         clip_weights = clip_classifier(classnames, template, clip_model, preprocess)
 
         if args.wandb:
-            run_name = f"{dataset_name} x HF Prompts TDA"
+            run_name = f"{dataset_name}"
             run = wandb.init(project="CLIP-ViT-B16-VM", config=cfg, group=group_name, name=run_name)
         else:
             run = wandb.init(mode='disabled')
 
+        start = timeit.default_timer()
         acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
-
+        stop = timeit.default_timer()
+        time = stop - start
+        runtimes.append(round(time, 2))
+        acc_data.append(round(acc, 5))
+        max_mem.append(round(torch.cuda.max_memory_allocated() / 1024 ** 2, 2))
         if args.wandb:
             wandb.log({f"{dataset_name}": acc})
-            max_mem = torch.cuda.max_memory_allocated() / 1024 ** 2
-            torch.cuda.reset_max_memory_allocated
-            wandb.log({f"{dataset_name} GPU memory (MB)": mem})
-            wandb.log({f"{dataset_name} Max GPU memory allocated (MB)": max_mem})
             run.finish()
     print(f"Max memory allocated: {torch.cuda.max_memory_allocated() / 1024 ** 2:.2f} MB")
+    acc_metrics = model + acc_data + [round(sum(acc_data)/len(acc_data), 5)]
+    mem_metrics = model + init_mem + max_mem + round([sum(max_mem)/len(max_mem), 2)]
+    time_metrics = model + runtimes + [round(sum(runtimes)/len(runtimes), 2)] + [sum(runtimes)]
+    append_to_csv('acc_metrics.csv', header, acc_metrics)
+    append_to_csv('mem_metrics.csv', max_mem_header, mem_metrics)
+    append_to_csv('time_metrics.csv', time_header, time_metrics)
+    del clip_model
+    del clip_weights
+    gc.collect()
+    torch.cuda.empty_cache()
 
 if __name__ == "__main__":
     main()
