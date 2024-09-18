@@ -160,14 +160,6 @@ def main():
             # prepare_for_inference(clip_model)
             preprocess = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch16")
 
-            # Tent and ClipArTT TTA
-            clip_model = tent.configure_model(clip_model, 'ViT')
-            params, param_names = tent.collect_params(clip_model, 'ViT')
-            print(param_names)
-            optimizer = torch.optim.SGD(params, 0.001/64, momentum=0.9) 
-            clip_model = tent.Tent(clip_model, optimizer, method='tent')
-
-
             mem = torch.cuda.memory_allocated() / 1024 ** 2
             print(f"Memory allocated after model is on GPU: {mem:.2f} MB")
             init_mem.append(round(mem, 2))
