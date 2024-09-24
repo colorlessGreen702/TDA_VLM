@@ -5,6 +5,8 @@ import math
 import numpy as np
 import clip
 from datasets.imagenet import ImageNet
+from datasets.cifar10 import CIFAR10C
+from datasets.cifar100 import CIFAR100C
 from datasets import build_dataset
 from datasets.utils import build_data_loader, AugMixAugmenter
 import torchvision.transforms as transforms
@@ -124,7 +126,7 @@ def get_config_file(config_path, dataset_name):
     return cfg
 
 
-def build_test_data_loader(dataset_name, root_path, preprocess):
+def build_test_data_loader(dataset_name, root_path, preprocess, corruption_type=None):
     if dataset_name == 'I':
         dataset = ImageNet(root_path, preprocess)
         test_loader = torch.utils.data.DataLoader(dataset.test, batch_size=1, num_workers=8, shuffle=True)
@@ -137,6 +139,22 @@ def build_test_data_loader(dataset_name, root_path, preprocess):
     elif dataset_name in ['caltech101','dtd','eurosat','fgvc','food101','oxford_flowers','oxford_pets','stanford_cars','sun397','ucf101']:
         dataset = build_dataset(dataset_name, root_path)
         test_loader = build_data_loader(data_source=dataset.test, batch_size=1, is_train=False, tfm=preprocess, shuffle=True)
+
+    elif dataset_name == 'cifar10c':
+        # For CIFAR-10-C, load the dataset with a specified corruption type
+        # preprocess = get_ood_preprocess()
+        if corruption_type is None:
+            raise ValueError("Corruption type must be specified for CIFAR-10-C")
+        dataset =  CIFAR10C(root=root_path, corruption_type=corruption_type, transform=preprocess)
+        test_loader = torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=True, num_workers=8)
+
+    elif dataset_name == 'cifar100c':
+        # For CIFAR-100-C, load the dataset with a specified corruption type
+        # preprocess = get_ood_preprocess()
+        if corruption_type is None:
+            raise ValueError("Corruption type must be specified for CIFAR-100-C")
+        dataset =  CIFAR100C(root=root_path, corruption_type=corruption_type, transform=preprocess)
+        test_loader = torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=True, num_workers=8)
     
     else:
         raise "Dataset is not from the chosen list"

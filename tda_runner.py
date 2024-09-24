@@ -70,6 +70,7 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
         
         #Unpack all hyperparameters
         pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
+        # pos_enabled, neg_enabled = False, False
         if pos_enabled:
             pos_params = {k: pos_cfg[k] for k in ['shot_capacity', 'alpha', 'beta']}
         if neg_enabled:
@@ -95,10 +96,9 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
                 
             acc = cls_acc(final_logits, target)  
             accuracies.append(acc)
-            wandb.log({"Averaged test accuracy": sum(accuracies)/len(accuracies)}, commit=True)
 
-            if i%1000==0:
-                print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))
+            # if i%1000==0:
+            #     print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))
         print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))   
         return sum(accuracies)/len(accuracies)
 
@@ -106,6 +106,7 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
 
 def main():
     args = get_arguments()
+    accs = []
     config_path = args.config
 
     # Initialize CLIP model
@@ -116,31 +117,42 @@ def main():
     random.seed(1)
     torch.manual_seed(1)
 
-    if args.wandb:
-        date = datetime.now().strftime("%b%d_%H-%M-%S")
-        group_name = f"{args.backbone}_{args.datasets}_{date}"
+    cifar10c_corruption_types = ['original','gaussian_noise', 'shot_noise', 'impulse_noise', 'defocus_blur', 
+                                 'glass_blur', 'motion_blur', 'zoom_blur', 'snow', 'frost', 
+                                 'fog', 'brightness', 'contrast', 'elastic_transform', 'pixelate', 
+                                 'jpeg_compression']
     
     # Run TDA on each dataset
     datasets = args.datasets.split('/')
     for dataset_name in datasets:
-        print(f"Processing {dataset_name} dataset.")
-        
-        cfg = get_config_file(config_path, dataset_name)
-        print("\nRunning dataset configurations:")
-        print(cfg, "\n")
-        
-        test_loader, classnames, template = build_test_data_loader(dataset_name, args.data_root, preprocess)
-        clip_weights = clip_classifier(classnames, template, clip_model)
+        if dataset_name == 'cifar10c' or dataset_name == 'cifar100c':
+            for corruption_type in cifar10c_corruption_types:
+                print(f"Processing {dataset_name} with corruption {corruption_type}.")
+                
+                cfg = get_config_file(config_path, dataset_name)
+                print("\nRunning dataset configurations:")
+                print(cfg, "\n")
+                
+                test_loader, classnames, template = build_test_data_loader(dataset_name, args.data_root, preprocess, corruption_type)
+                clip_weights = clip_classifier(classnames, template, clip_model)
 
-        if args.wandb:
-            run_name = f"{dataset_name}"
-            run = wandb.init(project="ETTA-CLIP", config=cfg, group=group_name, name=run_name)
+                acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
+                accs.append(acc)
 
-        acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
+        else:
+            print(f"Processing {dataset_name} dataset.")
+            
+            cfg = get_config_file(config_path, dataset_name)
+            print("\nRunning dataset configurations:")
+            print(cfg, "\n")
+            
+            test_loader, classnames, template = build_test_data_loader(dataset_name, args.data_root, preprocess)
+            clip_weights = clip_classifier(classnames, template, clip_model)
 
-        if args.wandb:
-            wandb.log({f"{dataset_name}": acc})
-            run.finish()
+            acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
+    print(cifar10c_corruption_types)
+    print(accs)
+
 
 if __name__ == "__main__":
     main()
