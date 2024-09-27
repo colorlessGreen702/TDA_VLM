@@ -8,6 +8,7 @@ import torch
 import torch.nn.functional as F
 import operator
 
+import csv
 import clip
 from utils import *
 
@@ -102,11 +103,30 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
         print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))   
         return sum(accuracies)/len(accuracies)
 
+def append_to_csv(file_path, data, header):
+    file_exists = os.path.isfile(file_path)
+    
+    with open(file_path, 'a', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        
+        if not file_exists:
+            writer.writerow(header)
+        
+        writer.writerow(data)
 
+def make_header(datasets, corruptions):
+    header = ['Method']
+    for d in datasets:
+        if d in ['cifar10c', 'cifar100c']:
+            for c in corruptions:
+                header.append(d+' '+c)
+        else:
+            header.append(d)
+    return header
 
 def main():
     args = get_arguments()
-    accs = []
+    accs = ['TDA (1/8)']
     config_path = args.config
 
     # Initialize CLIP model
@@ -123,7 +143,10 @@ def main():
                                  'jpeg_compression']
     
     # Run TDA on each dataset
-    datasets = args.datasets.split('/')
+    datasets = ['cifar10c', 'cifar100c', 'caltech101', 'dtd', 'oxford_pets', 'ucf101', 'A', 'V']
+
+    header = make_header(datasets, cifar10c_corruption_types)
+
     for dataset_name in datasets:
         if dataset_name == 'cifar10c' or dataset_name == 'cifar100c':
             for corruption_type in cifar10c_corruption_types:
@@ -150,8 +173,9 @@ def main():
             clip_weights = clip_classifier(classnames, template, clip_model)
 
             acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
-    print(cifar10c_corruption_types)
-    print(accs)
+            accs.append(acc)
+    append_to_csv('TDA_accs.csv', accs, header)
+
 
 
 if __name__ == "__main__":

@@ -2,15 +2,15 @@ from torchvision.datasets import CIFAR100
 import numpy as np
 import os
 
-# template = ["itap of a {}.",
-#             "a bad photo of the {}.",
-#             "a origami {}.",
-#             "a photo of the large {}.",
-#             "a {} in a video game.",
-#             "art of the {}.",
-#             "a photo of the small {}."]
+template = ["itap of a {}.",
+            "a bad photo of the {}.",
+            "a origami {}.",
+            "a photo of the large {}.",
+            "a {} in a video game.",
+            "art of the {}.",
+            "a photo of the small {}."]
 
-template = ["a photo of a {}."]
+# template = ["a photo of a {}."]
 
 
 class CIFAR100C(CIFAR100):
