@@ -1,0 +1,1752 @@
+[
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 91.73
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 44.54
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 48.07
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 60.31
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 73.89
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 47.86
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 71.88
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 75.98
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 77.4
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 80.44
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 73.43
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 86.67
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 66.5
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 57.16
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 54.59
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 62.85
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.71
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 24.26
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 25.93
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 32.88
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 45.56
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 21.64
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 44.47
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 50.37
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 49.97
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 51.46
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 43.07
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 59.59
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 37.14
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 30.41
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 28.07
+    },
+    {
+        "method": "TDA HQQ 8bit 128gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 34.57
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 91.62
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 44.46
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 45.99
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 60.16
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 73.73
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 47.35
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 70.94
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 75.48
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 77.65
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 80.45
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 73.38
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 86.82
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 65.99
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 57.07
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 55.09
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 62.7
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.75
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 23.92
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 25.9
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 32.31
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 45.14
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 21.61
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 44.62
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 50.21
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 49.71
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 51.53
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 43.08
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 59.28
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 36.95
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 30.41
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 28.29
+    },
+    {
+        "method": "TDA HQQ 8bit 64gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 34.51
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 91.62
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 43.58
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 45.68
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 59.76
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 73.67
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 47.32
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 71.58
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 76.09
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 77.63
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 80.24
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 73.4
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 86.99
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 66.08
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 56.94
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 54.25
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 62.97
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.69
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 23.95
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 25.94
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 32.47
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 45.43
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 21.57
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 44.85
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 50.26
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 49.72
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 51.53
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 43.14
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 59.26
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 36.83
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 30.38
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 28.15
+    },
+    {
+        "method": "TDA HQQ 8bit 32gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 34.55
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 91.72
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 43.98
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 48.14
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 60.04
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 73.96
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 46.77
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 71.55
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 75.77
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 77.79
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 80.41
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 73.25
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 86.82
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 66.91
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 56.81
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 54.71
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 62.93
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.74
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 23.63
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 25.91
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 32.41
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 45.27
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 21.57
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 44.73
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 50.41
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 49.55
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 51.4
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 42.96
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 59.33
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 36.75
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 30.41
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 28.37
+    },
+    {
+        "method": "TDA HQQ 8bit 16gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 34.49
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 91.75
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 43.97
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 48.52
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 59.79
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 74.15
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 47.11
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 71.59
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 75.97
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 77.22
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 80.58
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 72.96
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 87.08
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 66.17
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 57.14
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 55.71
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 63.25
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.8
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 24.02
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 25.93
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 32.43
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 45.41
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 21.62
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 44.71
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 50.13
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 49.53
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 51.59
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 42.85
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 59.21
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 36.68
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 30.35
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 28.51
+    },
+    {
+        "method": "TDA HQQ 8bit 8gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 34.77
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 90.99
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 32.57
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 38.56
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 52.53
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 74.43
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 44.02
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 72.72
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 77.3
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 77.1
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 76.82
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 72.41
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 85.7
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 63.83
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 59.06
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 51.78
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 60.05
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 67.42
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 15.86
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 17.28
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 23.6
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 43.3
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 18.87
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 41.72
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 48.53
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 46.53
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 46.46
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 40.49
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 57.2
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 32.24
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 29.5
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 23.19
+    },
+    {
+        "method": "TDA HQQ 4bit 128gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 31.29
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 90.73
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 38.56
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 42.51
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 55.94
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 71.93
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 44.83
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 69.72
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 74.93
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 73.73
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 75.02
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 68.77
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 84.06
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 63.38
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 57.39
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 52.29
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 61.33
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 66.39
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 19.37
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 20.9
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 27.24
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 41.36
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 18.62
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 40.06
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 46.11
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 44.75
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 44.65
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 37.03
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 54.8
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 32.52
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 28.08
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 24.88
+    },
+    {
+        "method": "TDA HQQ 4bit 64gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 31.94
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 90.45
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 41.71
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 44.15
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 57.9
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 73.56
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 45.44
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 68.79
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 75.93
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 74.92
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 77.86
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 71.88
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 84.94
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 65.7
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 57.22
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 49.67
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 58.9
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 68.55
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 21.19
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 23.58
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 29.79
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 44.8
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 18.83
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 42.5
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 49.66
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 46.82
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 47.94
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 41.34
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 58.18
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 35.49
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 29.04
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 23.5
+    },
+    {
+        "method": "TDA HQQ 4bit 32gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 31.84
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 90.85
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 43.15
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 49.08
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 59.91
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 72.44
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 45.4
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 70.24
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 74.68
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 75.7
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 78.32
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 70.25
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 85.2
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 62.19
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 57.28
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 53.99
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 60.94
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.13
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 22.17
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 24.59
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 31.57
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 43.77
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 20.82
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 43.13
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 49.19
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 47.9
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 49.36
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 42.33
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 58.2
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 34.66
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 29.54
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 27.72
+    },
+    {
+        "method": "TDA HQQ 4bit 16gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 32.95
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 90.83
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 44.23
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 47.19
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 60.59
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 72.88
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 45.7
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 70.61
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 74.32
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 76.3
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 79.26
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 71.17
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 85.63
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 65.17
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 56.28
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 51.05
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 61.83
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 69.33
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 23.7
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 24.97
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 31.91
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 45.02
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 20.91
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 43.72
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 49.66
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 48.44
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 49.99
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 42.05
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 58.96
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 36.67
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 29.36
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c pixelate",
+        "accuracy": 25.77
+    },
+    {
+        "method": "TDA HQQ 4bit 8gp",
+        "benchmark": "cifar100c jpeg_compression",
+        "accuracy": 33.49
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c original",
+        "accuracy": 74.57
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c gaussian_noise",
+        "accuracy": 23.94
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c shot_noise",
+        "accuracy": 26.82
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c impulse_noise",
+        "accuracy": 33.81
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c defocus_blur",
+        "accuracy": 48.44
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c glass_blur",
+        "accuracy": 29.29
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c motion_blur",
+        "accuracy": 45.81
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c zoom_blur",
+        "accuracy": 49.36
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c snow",
+        "accuracy": 57.97
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c frost",
+        "accuracy": 52.45
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c fog",
+        "accuracy": 44.02
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c brightness",
+        "accuracy": 68.26
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c contrast",
+        "accuracy": 31.78
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c elastic_transform",
+        "accuracy": 42.78
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c pixelate",
+        "accuracy": 32.63
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar10c jpeg_compression",
+        "accuracy": 36.35
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c original",
+        "accuracy": 41.29
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c gaussian_noise",
+        "accuracy": 5.16
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c shot_noise",
+        "accuracy": 5.93
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c impulse_noise",
+        "accuracy": 7.33
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c defocus_blur",
+        "accuracy": 19.62
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c glass_blur",
+        "accuracy": 9.88
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c motion_blur",
+        "accuracy": 18.12
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c zoom_blur",
+        "accuracy": 20.19
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c snow",
+        "accuracy": 23.03
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c frost",
+        "accuracy": 21.57
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c fog",
+        "accuracy": 16.42
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c brightness",
+        "accuracy": 31.22
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c contrast",
+        "accuracy": 11.16
+    },
+    {
+        "method": "TDA HQQ 3bit 128gp",
+        "benchmark": "cifar100c elastic_transform",
+        "accuracy": 14.17
+    }
+]
