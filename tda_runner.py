@@ -11,6 +11,8 @@ import operator
 import csv
 import clip
 from utils import *
+import json
+import time
 
 
 def get_arguments():
@@ -64,6 +66,110 @@ def compute_cache_logits(image_features, cache, alpha, beta, clip_weights, neg_m
         affinity = image_features @ cache_keys
         cache_logits = ((-1) * (beta - beta * affinity)).exp() @ cache_values
         return alpha * cache_logits
+    
+# Function to write data to JSON file
+def write_to_json(filename, data):
+    # Read existing data from the file
+    if os.path.exists(filename):
+        with open(filename, 'r') as file:
+            try:
+                file_data = json.load(file)
+            except json.JSONDecodeError:
+                file_data = []  # In case the file is empty or corrupted
+    else:
+        file_data = []
+
+    updated = False
+    for entry in file_data:
+        if entry['method'] == data['method'] and entry['benchmark'] == data['benchmark']:
+            # Update the existing entry
+            entry.update(data)
+            updated = True
+            break
+
+    # If no match was found, add the new entry
+    if not updated:
+        file_data.append(data)
+
+    # Write updated data back to the file
+    with open(filename, 'w') as file:
+        json.dump(file_data, file, indent=4)
+    print(f"Data written to {filename} successfully.")
+
+
+# def check_entry_exists(file_name, lock, method, benchmark):
+#     with lock:
+#         try:
+#             # Read the existing data from the JSON file
+#             with open(file_name, 'r') as file:
+#                 existing_data = json.load(file)
+#         except FileNotFoundError:
+#             # If the file does not exist, return False
+#             return False
+
+#         # Check if an entry with the same method and benchmark exists
+#         for entry in existing_data:
+#             if entry.get('method') == method and entry.get('benchmark') == benchmark:
+#                 return True
+
+#         # Return False if no match is found
+#         return False
+
+def profile_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights, dataset):
+    with torch.no_grad():
+        pos_cache, neg_cache, accuracies = {}, {}, []
+        measured_samples = 0
+        latency = 0
+        memory_usage = 0
+        
+        #Unpack all hyperparameters
+        pos_enabled, neg_enabled = pos_cfg['enabled'], neg_cfg['enabled']
+        # pos_enabled, neg_enabled = False, False
+        if pos_enabled:
+            pos_params = {k: pos_cfg[k] for k in ['shot_capacity', 'alpha', 'beta']}
+        if neg_enabled:
+            neg_params = {k: neg_cfg[k] for k in ['shot_capacity', 'alpha', 'beta', 'entropy_threshold', 'mask_threshold']}
+
+        #Test-time adaptation
+        for i, (images, target) in enumerate(tqdm(loader, desc='Processed test images: ')):
+
+            if i >= 20:
+                start_time = time.time()
+                torch.cuda.reset_peak_memory_stats('cuda')
+
+            image_features, clip_logits, loss, prob_map, pred = get_clip_logits(images ,clip_model, clip_weights)
+            target, prop_entropy = target.cuda(), get_entropy(loss, clip_weights)
+
+            if pos_enabled:
+                update_cache(pos_cache, pred, [image_features, loss], pos_params['shot_capacity'])
+
+            if neg_enabled and neg_params['entropy_threshold']['lower'] < prop_entropy < neg_params['entropy_threshold']['upper']:
+                update_cache(neg_cache, pred, [image_features, loss, prob_map], neg_params['shot_capacity'], True)
+
+            final_logits = clip_logits.clone()
+            if pos_enabled and pos_cache:
+                final_logits += compute_cache_logits(image_features, pos_cache, pos_params['alpha'], pos_params['beta'], clip_weights)
+            if neg_enabled and neg_cache:
+                final_logits -= compute_cache_logits(image_features, neg_cache, neg_params['alpha'], neg_params['beta'], clip_weights, (neg_params['mask_threshold']['lower'], neg_params['mask_threshold']['upper']))
+            
+            if i >= 20:
+                latency += time.time() - start_time
+                memory_usage += torch.cuda.max_memory_allocated('cuda')
+                measured_samples += 1
+                if measured_samples == 10:
+                    break
+
+        avg_memory = memory_usage / measured_samples
+        avg_latency = latency / measured_samples
+
+        data = {
+            "method": 'TDA',
+            "benchmark": dataset,
+            "memory": round(avg_memory / (1024 ** 2), 4),  # Convert memory to MB
+            "latency": round(avg_latency, 4),  # Latency per sample in seconds
+        }
+
+        write_to_json('data.json', data)
 
 def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
     with torch.no_grad():
@@ -98,35 +204,12 @@ def run_test_tda(pos_cfg, neg_cfg, loader, clip_model, clip_weights):
             acc = cls_acc(final_logits, target)  
             accuracies.append(acc)
 
-            # if i%1000==0:
-            #     print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))
         print("---- TDA's test accuracy: {:.2f}. ----\n".format(sum(accuracies)/len(accuracies)))   
         return sum(accuracies)/len(accuracies)
 
-def append_to_csv(file_path, data, header):
-    file_exists = os.path.isfile(file_path)
-    
-    with open(file_path, 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        
-        if not file_exists:
-            writer.writerow(header)
-        
-        writer.writerow(data)
-
-def make_header(datasets, corruptions):
-    header = ['Method']
-    for d in datasets:
-        if d in ['cifar10c', 'cifar100c']:
-            for c in corruptions:
-                header.append(d+' '+c)
-        else:
-            header.append(d)
-    return header
 
 def main():
     args = get_arguments()
-    accs = ['TDA (1/8)']
     config_path = args.config
 
     # Initialize CLIP model
@@ -143,12 +226,11 @@ def main():
                                  'jpeg_compression']
     
     # Run TDA on each dataset
-    datasets = ['cifar10c', 'cifar100c', 'caltech101', 'dtd', 'oxford_pets', 'ucf101', 'A', 'V']
+    datasets = ['cifar10', 'cifar100', 'caltech101', 'dtd', 'oxford_pets', 'ucf101', 'A', 'V']
 
-    header = make_header(datasets, cifar10c_corruption_types)
 
     for dataset_name in datasets:
-        if dataset_name == 'cifar10c' or dataset_name == 'cifar100c':
+        if dataset_name == 'cifar10' or dataset_name == 'cifar100':
             for corruption_type in cifar10c_corruption_types:
                 print(f"Processing {dataset_name} with corruption {corruption_type}.")
                 
@@ -159,8 +241,15 @@ def main():
                 test_loader, classnames, template = build_test_data_loader(dataset_name, args.data_root, preprocess, corruption_type)
                 clip_weights = clip_classifier(classnames, template, clip_model)
 
-                acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
-                accs.append(acc)
+                # acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
+                # data = {
+                #     "method": 'TDA',
+                #     "benchmark": f'{dataset_name} {corruption_type}',
+                #     "accuracy": acc  # in percentage
+                #     }
+                # write_to_json('data.json', data)
+
+                profile_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights, f'{dataset_name} {corruption_type}')
 
         else:
             print(f"Processing {dataset_name} dataset.")
@@ -172,9 +261,15 @@ def main():
             test_loader, classnames, template = build_test_data_loader(dataset_name, args.data_root, preprocess)
             clip_weights = clip_classifier(classnames, template, clip_model)
 
-            acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
-            accs.append(acc)
-    append_to_csv('TDA_accs.csv', accs, header)
+            # acc = run_test_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights)
+            # data = {
+            #     "method": 'TDA',
+            #     "benchmark": dataset_name,
+            #     "accuracy": acc  # in percentage
+            #     }
+            # write_to_json('data.json', data)
+
+            profile_tda(cfg['positive'], cfg['negative'], test_loader, clip_model, clip_weights, f'{dataset_name}')
 
 
 

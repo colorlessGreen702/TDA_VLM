@@ -140,7 +140,7 @@ def build_test_data_loader(dataset_name, root_path, preprocess, corruption_type=
         dataset = build_dataset(dataset_name, root_path)
         test_loader = build_data_loader(data_source=dataset.test, batch_size=1, is_train=False, tfm=preprocess, shuffle=True)
 
-    elif dataset_name == 'cifar10c':
+    elif dataset_name == 'cifar10':
         # For CIFAR-10-C, load the dataset with a specified corruption type
         # preprocess = get_ood_preprocess()
         if corruption_type is None:
@@ -148,7 +148,7 @@ def build_test_data_loader(dataset_name, root_path, preprocess, corruption_type=
         dataset =  CIFAR10C(root=root_path, corruption_type=corruption_type, transform=preprocess)
         test_loader = torch.utils.data.DataLoader(dataset, batch_size=1, shuffle=True, num_workers=8)
 
-    elif dataset_name == 'cifar100c':
+    elif dataset_name == 'cifar100':
         # For CIFAR-100-C, load the dataset with a specified corruption type
         # preprocess = get_ood_preprocess()
         if corruption_type is None:
